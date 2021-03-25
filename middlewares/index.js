@@ -1,6 +1,7 @@
-import { validateNewUserData, checkIfUserAlreadyExists, } from './user';
+import { validateNewUserData, checkIfUserAlreadyExists, validateLoginData, } from './user';
 
 export {
     validateNewUserData,
     checkIfUserAlreadyExists,
+    validateLoginData,
 }

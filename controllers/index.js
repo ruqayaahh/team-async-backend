@@ -1,3 +1,3 @@
-import registerNewUser from './user';
+import { registerNewUser, loginUser } from './user';
 
-export default registerNewUser;
+export { registerNewUser, loginUser };

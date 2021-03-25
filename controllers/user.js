@@ -1,8 +1,8 @@
-import { addNewUser } from '../services';
+import { addNewUser, getSingleUserByEmail } from '../services';
 
-import { hashPassword } from '../utils';
+import { hashPassword, comparePassword, convertDataToToken } from '../utils';
 
-const registerNewUser = async (req, res) => {
+export const registerNewUser = async (req, res) => {
   try {
     const encryptedPassword = hashPassword(req.body.password);
     const userInfo = {
@@ -24,4 +24,30 @@ const registerNewUser = async (req, res) => {
   }
 };
 
-export default registerNewUser;
+export const loginUser = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const user = await getSingleUserByEmail(email);
+    if (user && comparePassword(password, user.password)) {
+      const token = convertDataToToken({ email, id: user.id });
+      console.log(user.id);
+      console.log(user.user_id);
+      console.log(token)
+      // delete user.password;
+      return res.status(201).json({
+        status: 'Success',
+        message: 'Login successful',
+        token: token,
+      });
+    }
+    return res.status(401).json({
+      status: 'Fail',
+      message: 'Invalid login details',
+    });
+  } catch (error) {
+    return res.status(500).json({
+      status: 'Fail',
+      message: 'Something went wrong',
+    });
+  }
+};
