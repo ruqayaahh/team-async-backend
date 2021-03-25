@@ -29,10 +29,7 @@ export const loginUser = async (req, res) => {
     const { email, password } = req.body;
     const user = await getSingleUserByEmail(email);
     if (user && comparePassword(password, user.password)) {
-      const token = convertDataToToken({ email, id: user.id });
-      console.log(user.id);
-      console.log(user.user_id);
-      console.log(token)
+      const token = convertDataToToken({ email, id: user.user_id });
       // delete user.password;
       return res.status(201).json({
         status: 'Success',
