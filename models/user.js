@@ -1,6 +1,6 @@
 const userModel = [
     {
-      id: '719a6c77-f46e-43ba-bbdb-fd7fa890af71',
+      userId: '719a6c77-f46e-43ba-bbdb-fd7fa890af71',
       fullName: 'Peculiar Erhis',
       email: 'perhis@gmail.com',
       phone: 08126432823,
