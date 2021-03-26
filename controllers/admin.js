@@ -12,6 +12,11 @@ const loginAdmin = async (req, res) => {
         status: 'Success',
         message: 'Login successful',
         token: token,
+        deets: {
+          image: admin.photo_url,
+          adminName: admin.full_name,
+          adminEmail: email,
+        }
       });
     }
     return res.status(401).json({
