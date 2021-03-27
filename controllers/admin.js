@@ -2,7 +2,7 @@ import { getSingleAdminByEmail } from '../services';
 
 import { convertDataToToken } from '../utils';
 
-const loginAdmin = async (req, res) => {
+export const loginAdmin = async (req, res) => {
   try {
     const { email, password } = req.body;
     const admin = await getSingleAdminByEmail(email);
@@ -31,4 +31,17 @@ const loginAdmin = async (req, res) => {
   }
 };
 
-export default loginAdmin;
+export const authVerified = async (req, res) => {
+  try {
+    const message = 'Access verified';
+    return res.status(200).json({
+      status: 'Success',
+      message: message,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      status: 'Fail',
+      message: 'Something went wrong',
+    });
+  }
+};

@@ -1,9 +1,10 @@
 import { Router } from 'express';
-import { loginAdmin } from '../controllers';
-import { validateAdminLoginData } from '../middlewares';
+import { loginAdmin, authVerified } from '../controllers';
+import { validateAdminLoginData, authenticate } from '../middlewares';
 
 const adminRouter = Router();
 
 adminRouter.post('/adminlogin', validateAdminLoginData, loginAdmin);
+adminRouter.get('/adminverify', authenticate, authVerified);
 
 export default adminRouter;

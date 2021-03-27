@@ -1,4 +1,4 @@
 import { registerNewUser, loginUser } from './user';
-import loginAdmin from "./admin";
+import { loginAdmin, authVerified } from "./admin";
 
-export { registerNewUser, loginUser, loginAdmin };
+export { registerNewUser, loginUser, loginAdmin, authVerified };
