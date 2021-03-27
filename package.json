@@ -1,11 +1,12 @@
 {
   "name": "r-a-portal",
   "version": "1.0.0",
+  "type": "module",
   "description": "a recruitment and application app",
   "main": "app.js",
   "scripts": {
     "test": "\"echo \\\"Error: no test specified\\\" && exit 1\"",
-    "start": "node app.js",
+    "start": "nodemon app.js",
     "lint": "eslint --ext .js ./ --fix"
   },
   "repository": {
@@ -26,8 +27,12 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "bluebird": "^3.7.2",
+    "cloudinary": "^1.25.1",
+    "datauri": "^3.0.0",
     "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
     "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
     "joi": "^17.4.0",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
