@@ -9,12 +9,10 @@ export const registerNewUser = async (req, res) => {
       ...req.body,
       password: encryptedPassword,
     };
-    const updatedUserInfo = await addNewUser(userInfo);
-    // delete updatedUserInfo.password;
+    await addNewUser(userInfo);
     res.status(201).json({
       status: 'Success',
       message: 'Registration successful',
-    //   data: updatedUserInfo,
     });
   } catch (error) {
     res.status(500).json({
@@ -30,11 +28,10 @@ export const loginUser = async (req, res) => {
     const user = await getSingleUserByEmail(email);
     if (user && comparePassword(password, user.password)) {
       const token = convertDataToToken({ email, id: user.user_id });
-      // delete user.password;
       return res.status(201).json({
         status: 'Success',
         message: 'Login successful',
-        token: token,
+        token,
       });
     }
     return res.status(401).json({
