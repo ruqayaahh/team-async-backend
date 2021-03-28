@@ -1,3 +1,4 @@
-import applicationSchema from './user';
+import { signUpSchema, loginSchema, applicationSchema } from './user';
+import loginAdminSchema from './admin';
 
-export default applicationSchema;
+export { signUpSchema, loginSchema, loginAdminSchema, applicationSchema };

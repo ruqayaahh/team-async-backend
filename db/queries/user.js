@@ -1,43 +1,3 @@
-// export const createUserTable = `
-//     create table if not exists user_table (
-//     user_id uuid primary key,
-//     full_name varchar not null,
-//     email varchar unique not null,
-//     phone bigint not null,
-//     password varchar not null,
-//     dob date,
-//     age int,
-//     address varchar,
-//     university varchar,
-//     course_of_study varchar,
-//     cgpa numeric(3, 2),
-//     batch_id int,
-//     test_score int,
-//     cv_url varchar unique,
-//     photo_url varchar unique,
-//     created_at timestamptz default now(),
-//     updated_at timestamptz default now()
-// );`,
-
-// export const createApplyTable = `
-//     create table if not exists applicants (
-//         id uuid primary key,
-//         first_name varchar not null,
-//         last_name varchar not null,
-//         email varchar unique not null,
-//         dob date not null,
-//         age int not null,
-//         address varchar not null,
-//         university varchar not null,
-//         course varchar not null,
-//         cgpa numeric(3, 2),
-//         cv varchar,
-//         photo varchar,
-//         batch_id uuid not null,
-//         created_at timestamptz default now(),
-//         updated_at timestamptz default now()
-// );`,
-
 export const insertUserApplication = `
         insert into applicants (
             id,
@@ -87,3 +47,17 @@ export const updateUser = `
     cv = $11,
     photo = $12,
     updated_at = NOW() WHERE user_id = $13;`;
+
+export const insertNewUser = `insert into user_table (
+    user_id,
+    full_name,
+    email,
+    phone,
+    password) values ($1, $2, $3, $4, $5);
+`;
+
+export const getUserByEmail = `
+    select * from user_table
+    where email = $1;
+`;
+

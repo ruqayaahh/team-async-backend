@@ -1,8 +1,26 @@
-import cloudinary from 'cloudinary';
-import { v4 as uuidv4 } from 'uuid';
+import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
+import { genSaltSync, hashSync, compareSync } from 'bcryptjs';
+import { v4 as uuidv4 } from 'uuid';
+import cloudinary from 'cloudinary';
 
 dotenv.config();
+
+const salt = genSaltSync(10);
+
+const jwtSecret = process.env.JWT_SECRET;
+
+const convertDataToToken = (data) => jwt.sign(data, jwtSecret, { expiresIn: '1h' });
+
+const verifyToken = (token) => jwt.verify(token, jwtSecret, (err, data) => ({ err, data }));
+
+const hashPassword = (password) => hashSync(password, salt);
+
+const comparePassword = (plainPassword, hashedPassword) => (
+  compareSync(plainPassword, hashedPassword)
+);
+
+const generateUUID = () => uuidv4();
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -21,9 +39,8 @@ const cloudinaryConfig = async (cvPath, photoPath) => {
   }
 };
 
-const generateUUID = () => uuidv4();
-
 export {
   cloudinaryConfig,
   generateUUID,
+  convertDataToToken, verifyToken, hashPassword, comparePassword, generateUUID,
 };

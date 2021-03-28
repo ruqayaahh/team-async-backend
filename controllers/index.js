@@ -1,3 +1,4 @@
-import createApplication from './user';
+import { createApplication, registerNewUser, loginUser } from './user';
+import { loginAdmin, authVerified } from "./admin";
 
-export default createApplication;
+export { createApplication, registerNewUser, loginUser, loginAdmin, authVerified };

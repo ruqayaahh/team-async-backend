@@ -1,9 +1,11 @@
-import {
-  findUserProfile,
-  newApplication,
-} from './user';
+import { getSingleUserByEmail, addNewUser, findUserProfile,
+  newApplication, } from './user';
+import getSingleAdminByEmail from './admin';
 
 export {
-  findUserProfile,
-  newApplication,
+    getSingleUserByEmail,
+    addNewUser,
+    getSingleAdminByEmail,
+    findUserProfile,
+    newApplication,
 };

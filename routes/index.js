@@ -1,3 +1,5 @@
 import userRouter from './user';
 
-export default userRouter;
+import adminRouter from './admin';
+
+export { userRouter, adminRouter };

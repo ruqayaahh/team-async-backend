@@ -6,7 +6,7 @@ dotenv.config();
 
 const pgp = pgPromise({ promiseLib: promise, noLocking: true });
 
-const dbUrl = process.env.DB_URL;
+const dbUrl = process.env.DATABASE_URL;
 
 const db = pgp(dbUrl);
 
