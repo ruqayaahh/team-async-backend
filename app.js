@@ -1,5 +1,6 @@
 import express, { json } from 'express';
 import logger from 'morgan';
+import expressFileUpload from 'express-fileupload';
 import dotenv from 'dotenv';
 import { userRouter, adminRouter } from './routes';
 
@@ -11,6 +12,7 @@ const app = express();
 
 app.use(json());
 app.use(logger('dev'));
+app.use(expressFileUpload({ useTempFiles: true }));
 
 app.get('/', (req, res) => res.json({ welcome: 'hello' }));
 app.use(userRouter);

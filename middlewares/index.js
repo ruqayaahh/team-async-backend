@@ -1,4 +1,6 @@
-import { validateNewUserData, checkIfUserAlreadyExists, validateLoginData, } from './user';
+import cloudinaryUpload from './upload';
+import { validateNewUserData, checkIfUserAlreadyExists, validateLoginData, validateApplication,
+  getUserProfile, } from './user';
 import validateAdminLoginData from './admin';
 import authenticate from './auth';
 
@@ -8,4 +10,7 @@ export {
     validateLoginData,
     validateAdminLoginData,
     authenticate,
+    cloudinaryUpload,
+    validateApplication,
+    getUserProfile,
 }
