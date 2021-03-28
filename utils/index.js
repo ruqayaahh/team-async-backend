@@ -1,5 +1,7 @@
-import { convertDataToToken, verifyToken, hashPassword, comparePassword, generateUUID, cloudinaryConfig, } from './helpers';
+import {
+  convertDataToToken, verifyToken, hashPassword, comparePassword, generateUUID, cloudinaryConfig,
+} from './helpers';
 
 export {
-    convertDataToToken, verifyToken, hashPassword, comparePassword, generateUUID, cloudinaryConfig,
+  convertDataToToken, verifyToken, hashPassword, comparePassword, generateUUID, cloudinaryConfig,
 };

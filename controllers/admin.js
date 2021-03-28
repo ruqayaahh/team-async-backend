@@ -11,12 +11,12 @@ export const loginAdmin = async (req, res) => {
       return res.status(201).json({
         status: 'Success',
         message: 'Login successful',
-        token: token,
+        token,
         deets: {
           image: admin.photo_url,
           adminName: admin.full_name,
           adminEmail: email,
-        }
+        },
       });
     }
     return res.status(401).json({
@@ -36,7 +36,7 @@ export const authVerified = async (req, res) => {
     const message = 'Access verified';
     return res.status(200).json({
       status: 'Success',
-      message: message,
+      message,
     });
   } catch (error) {
     return res.status(500).json({

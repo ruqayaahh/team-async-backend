@@ -1,4 +1,4 @@
-import { cloudinaryConfig } from '../utils/helpers';
+import { cloudinaryConfig } from '../utils';
 
 const cloudinaryUpload = async (req, res, next) => {
   try {

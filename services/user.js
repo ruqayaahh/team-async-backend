@@ -1,6 +1,8 @@
 import { generateUUID } from '../utils';
 import db from '../db/setup';
-import { getUserByEmail, insertNewUser, fetchUserByEmail, insertUserApplication } from '../db/queries/user';
+import {
+  getUserByEmail, insertNewUser, updateUser,
+} from '../db/queries/user';
 
 export const getSingleUserByEmail = async (email) => db.oneOrNone(getUserByEmail, [email]);
 
@@ -12,18 +14,12 @@ export const addNewUser = async (data) => {
   return db.none(insertNewUser, [id, fullName, email, phone, password]);
 };
 
-export const findUserProfile = async (email) => db.oneOrNone(fetchUserByEmail, [email]);
-
-export const newApplication = async (data) => {
-  const id = generateUUID();
+export const newApplication = async (userId, data) => {
   const batchId = generateUUID();
   const {
-    firstName, lastName, email, dob, age, address, university, course, cgpa, cv, photo,
+    email, dob, age, address, university, course, cgpa, cv, photo,
   } = data;
-  db.one(insertUserApplication, [
-    id,
-    firstName,
-    lastName,
+  db.none(updateUser, [
     email,
     dob,
     age,
@@ -33,5 +29,6 @@ export const newApplication = async (data) => {
     cgpa,
     cv,
     photo,
-    batchId]);
+    batchId,
+    userId]);
 };

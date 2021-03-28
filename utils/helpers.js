@@ -42,5 +42,5 @@ const cloudinaryConfig = async (cvPath, photoPath) => {
 export {
   cloudinaryConfig,
   generateUUID,
-  convertDataToToken, verifyToken, hashPassword, comparePassword, generateUUID,
+  convertDataToToken, verifyToken, hashPassword, comparePassword,
 };

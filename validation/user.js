@@ -1,8 +1,7 @@
 import Joi from 'joi';
 
 export const applicationSchema = Joi.object({
-  firstName: Joi.string().required(),
-  lastName: Joi.string().required(),
+  fullName: Joi.string().required(),
   email: Joi.string().email().required(),
   dob: Joi.string().regex(/^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/).required(),
   age: Joi.number().required(),
@@ -15,7 +14,8 @@ export const applicationSchema = Joi.object({
 });
 
 export const signUpSchema = Joi.object({
-  fullName: Joi.string().trim().min(5).max(100).required(),
+  fullName: Joi.string().trim().min(5).max(100)
+    .required(),
   email: Joi.string().trim().email().required(),
   phone: Joi.string().trim().regex(/^[0-9]{7,15}$/).required(),
   password: Joi.string().trim().min(8).required(),

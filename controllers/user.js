@@ -1,4 +1,4 @@
-import { addNewUser, getSingleUserByEmail, newApplication} from '../services';
+import { addNewUser, getSingleUserByEmail, newApplication } from '../services';
 
 import { hashPassword, comparePassword, convertDataToToken } from '../utils';
 
@@ -18,11 +18,10 @@ export const registerNewUser = async (req, res) => {
     res.status(500).json({
       status: 'Fail',
       message: 'Something went wrong',
-               });
+    });
   }
 };
 
- 
 export const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -49,17 +48,18 @@ export const loginUser = async (req, res) => {
 
 export const createApplication = async (req, res) => {
   const { body } = req;
+  const user = req.user.user_id;
   try {
-    const applicantDeets = await newApplication(body);
+    const applicantDeets = await newApplication(user, body);
     res.status(201).json({
       status: 'success',
-      message: 'Registration successful.',
+      message: 'Application successful.',
       data: applicantDeets,
     });
   } catch (error) {
     res.status(500).json({
       status: 'fail',
       message: 'Something went wronger.',
-         });
+    });
   }
 };
