@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "\"echo \\\"Error: no test specified\\\" && exit 1\"",
-    "start": "node app.js",
+    "start": "node -r esm app.js",
     "lint": "eslint --ext .js ./ --fix"
   },
   "repository": {
@@ -27,6 +27,7 @@
     "bcryptjs": "^2.4.3",
     "bluebird": "^3.7.2",
     "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
     "express": "^4.17.1",
     "joi": "^17.4.0",
     "jsonwebtoken": "^8.5.1",
@@ -36,7 +37,7 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "eslint": "^7.22.0",
+    "eslint": "^7.23.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-vue": "^7.8.0"
