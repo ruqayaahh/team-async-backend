@@ -1,21 +1,21 @@
-// import esm from "esm";
-const express = require("express");
-const logger = require("morgan");
-const expressFileUpload = require("express-fileupload");
+import express from 'express';
+import logger from 'morgan';
+import expressFileUpload from 'express-fileupload';
+import dotenv from 'dotenv';
+import userRouter from './routes';
+
+dotenv.config();
+
+const port = process.env.PORT || 3000;
+
 const app = express();
-var port = process.env.PORT || 3000;
-
-import applyRouter from "./routes/user.js";
-
-// const router = express.Router();
-app.use(applyRouter);
-
-app.use(json());
-app.use(logger("dev"));
+app.use(logger('dev'));
 app.use(expressFileUpload({ useTempFiles: true }));
 
-app.get("/", function (req, res) {
-  res.json({ message: "hooray! welcome to our api!" });
+app.use(userRouter);
+
+app.get('/', (req, res) => {
+  res.json({ message: 'hooray! welcome to our api!' });
 });
 
 app.listen(port, () => {

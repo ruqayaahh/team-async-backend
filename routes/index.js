@@ -1,3 +1,3 @@
-// import applyRouter from "./user";
+import userRouter from './user';
 
-// export default applyRouter;
+export default userRouter;

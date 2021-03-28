@@ -1,15 +1,17 @@
-export {};
-const Router = require('express');
+import Router from 'express';
 
-const cloudinaryUpload = require('../middleware');
+import { cloudinaryUpload, validateApplication } from '../middlewares';
+import createApplication from '../controllers';
 
-const applyRouter = Router();
+const userRouter = Router();
 
-applyRouter.post('/application', cloudinaryUpload);
+userRouter.post('/application', cloudinaryUpload, validateApplication, createApplication);
 
-export default applyRouter;
+export default userRouter;
 
-
-
+// userRouter.post('/application', authenticate, getUserProfile);
 // authenticate,
-// import createApplication from '../controllers/';validateApplication, getUserDetailsViaEmail, createApplication
+// cloudinaryUpload,
+// validateApplication,
+// getUserProfile,
+// createApplication
